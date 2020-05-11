@@ -32,14 +32,56 @@ header {
 
 #settings {
     position: fixed;
-    top: 60px;
+    top: 54px;
     left: 20px;
-    background-color: var(--color-darkGray);
-    padding: 6px;
+    background-color: var(--color-black);
+    border-radius: 4px;
 }
 
 .setting-icon {
-    
+    padding: 10px;
+    text-align: center;
+    height: 36px;
+    width: 36px;
+    color: var(--color-darkGray);
+    cursor: pointer;
+}
+
+.setting-icon:hover {
+    color: var(--color-white);
+}
+
+#color-palette {
+    position: fixed;
+    top: 54px;
+    left: 66px;
+    padding: 10px;
+    height: 90px;
+    background-color: var(--color-black);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    display: none;
+}
+
+.color {
+    min-height: 20px;
+    min-width: 20px;
+    border-radius: 2px;
+    border: 1px solid var(--color-lightGray)
+}
+
+.black {
+    background-color: black;
+}
+
+.red {
+    background-color: red;
+}
+
+.blue {
+    background-color: blue;
 }
 
 #canvasContainer {
