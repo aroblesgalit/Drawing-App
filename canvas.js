@@ -10,12 +10,14 @@ window.addEventListener("load", () => {
 
     // Variables
     let painting = false;
+    let strokeColor;
 
     function resizeCanvas() {
         canvas.height = canvas.parentElement.clientHeight;
         canvas.width = canvas.parentElement.clientWidth;
     }
     function startPosition(e) {
+        colorPalette.style.display = "none";
         painting = true;
         draw(e);
     }
@@ -27,7 +29,7 @@ window.addEventListener("load", () => {
         if(!painting) return;
         ctx.lineWidth = 10;
         ctx.lineCap = "round";
-        ctx.strokeStyle = "blue";
+        ctx.strokeStyle = strokeColor;
 
         ctx.lineTo(e.clientX, e.clientY - 40);
         ctx.stroke();
@@ -41,4 +43,26 @@ window.addEventListener("load", () => {
     canvas.addEventListener("mousemove", draw);
 
 
+    // Variables
+    const paletteIcon = document.querySelector("#palette-icon");
+    const colorPalette = document.querySelector("#color-palette");
+    
+    // Initial settings
+    colorPalette.style.display = "none";
+
+    function togglePalette() {
+        if (colorPalette.style.display === "none") {
+            colorPalette.style.display = "flex";
+        } else {
+            colorPalette.style.display = "none";
+        }
+    }
+    function setColor(e) {
+        strokeColor = e.target.style.backgroundColor;    
+        togglePalette();
+    }
+
+    // Settings
+    paletteIcon.addEventListener("click", togglePalette);
+    colorPalette.addEventListener("click", setColor);
 });
