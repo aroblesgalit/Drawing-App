@@ -57,6 +57,7 @@ window.addEventListener("load", () => {
     brushSizeContainer.style.display = "none";
 
     function togglePalette() {
+        brushSizeContainer.style.display = "none";
         if (colorPalette.style.display === "none") {
             colorPalette.style.display = "flex";
         } else {
@@ -69,12 +70,12 @@ window.addEventListener("load", () => {
         togglePalette();
     }
     function toggleBrushSize() {
-        console.log("Brush size icon clicked.");
+        colorPalette.style.display = "none";
         if (brushSizeContainer.style.display === "none") {
             brushSizeContainer.style.display = "block";
         } else {
             brushSizeContainer.style.display = "none";
-        }        
+        }
     }
     function setBrushSize() {
         strokeSize = brushSizeSlider.value;
