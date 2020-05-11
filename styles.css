@@ -28,6 +28,7 @@ header {
     font-size: 20px;
     min-height: 40px;
     height: 40px;
+    font-family: sans-serif;
 }
 
 #settings {
@@ -36,15 +37,22 @@ header {
     left: 20px;
     background-color: var(--color-black);
     border-radius: 4px;
+    display: flex;
+    flex-direction: column;
 }
 
 .setting-icon {
-    padding: 10px;
-    text-align: center;
     height: 36px;
     width: 36px;
     color: var(--color-darkGray);
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.setting-icon:not(:last-child) {
+    border-bottom: 1px solid var(--color-darkGray);
 }
 
 .setting-icon:hover {
@@ -78,10 +86,27 @@ header {
     border: 1px solid var(--color-white)
 }
 
+#brush-size input[type=range][orient=vertical] {
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* WebKit */
+    width: 8px;
+    height: 175px;
+    padding: 0 5px;
+}
+
+#brush-size {
+    position: fixed;
+    top: 54px;
+    left: 66px;
+    padding: 8px;
+    background-color: var(--color-black);
+    border-radius: 4px;
+    display: none;
+}
+
 #canvasContainer {
     width: 100%;
     flex-grow: 1;
-    background-color: green;
 }
 
 #canvas {

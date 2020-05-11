@@ -11,6 +11,7 @@ window.addEventListener("load", () => {
     // Variables
     let painting = false;
     let strokeColor;
+    let strokeSize = 5;
 
     function resizeCanvas() {
         canvas.height = canvas.parentElement.clientHeight;
@@ -18,6 +19,7 @@ window.addEventListener("load", () => {
     }
     function startPosition(e) {
         colorPalette.style.display = "none";
+        brushSizeContainer.style.display = "none";
         painting = true;
         draw(e);
     }
@@ -27,7 +29,7 @@ window.addEventListener("load", () => {
     }
     function draw(e) {
         if(!painting) return;
-        ctx.lineWidth = 10;
+        ctx.lineWidth = strokeSize;
         ctx.lineCap = "round";
         ctx.strokeStyle = strokeColor;
 
@@ -46,9 +48,13 @@ window.addEventListener("load", () => {
     // Variables
     const paletteIcon = document.querySelector("#palette-icon");
     const colorPalette = document.querySelector("#color-palette");
+    const brushSizeIcon = document.querySelector("#brush-size-icon");
+    const brushSizeContainer = document.querySelector("#brush-size");
+    const brushSizeSlider = document.querySelector(".brush-size-slider");
     
     // Initial settings
     colorPalette.style.display = "none";
+    brushSizeContainer.style.display = "none";
 
     function togglePalette() {
         if (colorPalette.style.display === "none") {
@@ -58,11 +64,26 @@ window.addEventListener("load", () => {
         }
     }
     function setColor(e) {
-        strokeColor = e.target.style.backgroundColor;    
+        strokeColor = e.target.style.backgroundColor;  
+        paletteIcon.style.color = strokeColor;  
         togglePalette();
+    }
+    function toggleBrushSize() {
+        console.log("Brush size icon clicked.");
+        if (brushSizeContainer.style.display === "none") {
+            brushSizeContainer.style.display = "block";
+        } else {
+            brushSizeContainer.style.display = "none";
+        }        
+    }
+    function setBrushSize() {
+        strokeSize = brushSizeSlider.value;
+        brushSizeIcon.style.fontSize = (strokeSize * 2) + "px";
     }
 
     // Settings
     paletteIcon.addEventListener("click", togglePalette);
     colorPalette.addEventListener("click", setColor);
+    brushSizeIcon.addEventListener("click", toggleBrushSize);
+    brushSizeContainer.addEventListener("change", setBrushSize);
 });

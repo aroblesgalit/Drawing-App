@@ -14,7 +14,8 @@
     <header>Drawing App</header>
     <section id="canvasContainer">
         <div id="settings">
-            <i id="palette-icon" class="setting-icon fa fa-tint"></i>
+            <div id="palette-icon" class="setting-icon"><i class="fa fa-tint"></i></div>
+            <div id="brush-size-icon" class="setting-icon" style="font-size: 10px;"><i class="fa fa-circle"></i></div>
         </div>
         <div id="color-palette">
             <div class="color" style="background-color: black;"></div>
@@ -24,8 +25,12 @@
             <div class="color" style="background-color: orange;"></div>
             <div class="color" style="background-color: yellow;"></div>
             <div class="color" style="background-color: green;"></div>
+            <div class="color" style="background-color: turquoise;"></div>
             <div class="color" style="background-color: blue;"></div>
             <div class="color" style="background-color: purple;"></div>
+        </div>
+        <div id="brush-size">
+            <input type="range" orient="vertical" min="1" max="10" value="5" class="brush-size-slider">
         </div>
         <canvas id="canvas"></canvas>
     </section>
